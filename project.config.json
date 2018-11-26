@@ -1,0 +1,132 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"miniprogramRoot": "dist/",
+	"compileType": "miniprogram",
+	"appid": "wx7cfdb90d275cba96",
+	"projectname": "hongpu",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 15,
+			"list": [
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "det",
+					"pathName": "pages/baoxiaodetail/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "bxiaods",
+					"pathName": "pages/bxsh/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "yusuan",
+					"pathName": "pages/yusuanlist/main",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "yusuan_det",
+					"pathName": "pages/yusuandetail/main",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "yssp",
+					"pathName": "pages/yssp/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "log",
+					"pathName": "pages/logs/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "fkuan",
+					"pathName": "pages/fukuandetail/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "fukuanshenpi",
+					"pathName": "pages/fukuansp/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "hetongsp",
+					"pathName": "pages/hetongsp/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "jiekuansp",
+					"pathName": "pages/jiekuansp/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "shiwusp",
+					"pathName": "pages/shiwusp/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "zjx",
+					"pathName": "pages/zjxlist/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "zjxsp",
+					"pathName": "pages/zjxsp/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "didan",
+					"pathName": "pages/didan/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "ceshixial",
+					"pathName": "pages/login/main"
+				}
+			]
+		}
+	}
+}

@@ -32,6 +32,9 @@ export default {
      tgtitle:'通过',
      jjtitle:'拒绝',
      curFlowID:'',
+     PlanExecuteTime:'',
+     PlanExecuteCycle:'0',
+
     }
   },
    components: {
@@ -57,9 +60,17 @@ export default {
 xuanranshuju(res){
          this.childdata=res.data;
          this.childdata.proname=this.proname;
+           this.childdata.PlanExecuteTime=res.data.PlanExecuteTime;
+           this.childdata.PlanExecuteCycle=res.data.PlanExecuteCycle;
+            this.childdata.IsShowPlanExecute=res.data.IsShowPlanExecute;
           this.wfbid=res.data.WFBID;
           this.proid=res.data.ProID;
           this.curFlowID=res.data.curFlowID;
+                   console.log(this.goType);
+                  if(this.goType==4){
+                this.tgtitle="确认阅读";
+                this.jjtitle="取消";
+              }
 },
        //通过获取拒绝，type是1表示通过，是0表示拒绝，str是备注的内容
     yesorno(type,str){
@@ -72,14 +83,18 @@ url='/API/WXGetData/PassProcessTransaction';
           data={msg:str,compactName:this.compactName,pid:this.id,curFlowID:this.curFlowID};
               }
               if(this.goType==4){
-                this.tgtitle="确认阅读";
-                this.jjtitle="取消";
 url='/API/WXGetData/RetrunProcessTransaction';
-          data={pid:this.pid,msg:str};
+          data={pid:this.id,msg:str};
+
               }
-            
           }
          else{
+           //取消阅读，返回上一页
+           if(this.goType==4){
+              return wx.navigateBack({
+    delta: 1
+          });
+           }
           url='/API/WXGetData/NewFAILProcessTransaction';
            data={pid:this.id,curFlowID:this.curFlowID,msg:str};
          }

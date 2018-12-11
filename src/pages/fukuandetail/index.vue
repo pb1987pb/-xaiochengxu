@@ -7,7 +7,7 @@
 <beizhutwo v-if="childdata" :beizhu="childdata.arrayl"></beizhutwo>
   </view>
 <view class="xbz" v-if="wtid>0&&type=='db'">
-<writebz @succ="tonguo" @fai="jujue"></writebz>
+<writebz @succ="tonguo" @fai="jujue" :tgtitle="tgtitle" :jjtitle="jjtitle"></writebz>
        </view>
   </div>
 </template>
@@ -46,13 +46,34 @@ export default {
 
   //通过获取拒绝，type是1表示通过，是0表示拒绝，str是备注的内容
     yesorno(type,str){
-          var url; //通过获取拒绝最终请求的地址
+          let url; //通过获取拒绝最终请求的地址
+          let data;
          if(type==1)
-          url=this.ybtgUrl;
-         else{
-          url=this.ybjjUrl;
+         {
+               //   非联和审批
+            if(this.IsUnionApproval==0){
+               url=this.ybtgUrl;
+               data={bid:this.id,remark:str};//数据
+            }else
+            {
+              //非联和审批
+               url=this.lianheurl;
+               data={wtid:this.wtid,remark:str};//数据
+            }
          }
-         let data={bid:this.id,remark:str};//数据
+          
+         else{
+               //是联和审批的时候取消，直接跳转
+            if(this.IsUnionApproval==1){
+                     return wx.navigateBack({
+                       delta: 1
+                       });
+            }
+
+             url=this.ybjjUrl;
+            data={bid:this.id,remark:str};//数据
+         }
+        //  let data={bid:this.id,remark:str};//数据
         this.accomplish(url,data);
     },
  

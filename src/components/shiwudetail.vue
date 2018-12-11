@@ -16,13 +16,18 @@
 
  <view>
      <view >流程类型：<text class="col">{{childdata.FName}}</text></view>
+ <template v-if="childdata.IsShowPlanExecute==1">
+<view >预计落地开始时间：<text class="col">{{childdata.PlanExecuteTime}}</text></view>
+<view >预计落地需要天数:<text class="col">{{childdata.PlanExecuteCycle}}</text></view>
+ </template>
 
-    <template v-if="childdata.IsHasPPC==1">
- <view>合同名称：<text class="col">{{childdata.CompactName}}</text></view>
-             <view>合同类型：<text class="col">{{childdata.CompactType}}</text></view>
-              <view>合同总金额：<text class="col">{{childdata.CompactMoney}}</text></view>
-               <view>合同剩余金额：<text class="col">{{childdata.CurCompactMoney}}</text></view>
-               </template>
+
+    <view v-for="(item, itemIndex) in childdata.ppcList" :key="itemIndex" class="xq">
+ <view>合同名称：<text class="col">{{item.CompactName}}</text></view>
+             <view>合同类型：<text class="col">{{item.CompactType}}</text></view>
+              <view>合同总金额：<text class="col">{{item.CompactMoney}}</text></view>
+               <view>合同剩余金额：<text class="col">{{item.CurCompactMoney}}</text></view>
+               </view>
        
            </view>
             <!--<view class="beizhu">备注：<text class="col ">{{childdata.Msg}}</text></view>-->
@@ -141,4 +146,5 @@ wx.hideLoading();
 .bxxq_page .rf{color: #0068b7;text-decoration: underline;line-height: 60rpx;}
 /*.bxxq_page .vie{width: 410rpx;}*/
 .bxxq_page .type{width: 50%;}
+.xq{padding: 20rpx 20rpx 20rpx 0; }
 </style>

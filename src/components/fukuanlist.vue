@@ -26,7 +26,8 @@
  <!--借款单待办开始-->
          <ul class="xms" v-else-if="text.type=='db'">
       <li  v-for="(item, itemIndex) in text.arr.expenseList" :key="itemIndex">
-              <a class="bbox" :href="'/pages/fukuandetail/main?id='+item.ID+'&proname='+item.ProName+'&type='+text.type+'&wtid='+item.wtid+'&fenlei='+item.ApplyType">
+              <a class="bbox"
+               :href="'/pages/fukuandetail/main?id='+item.ID+'&proname='+item.ProName+'&type='+text.type+'&wtid='+item.wtid+'&fenlei='+item.ApplyType+'&IsUnionApproval='+item.IsUnionApproval">
           <view class="lef bbox xycenter">
            <view class="iconfont icon-fukuanguanli"></view>
           </view>
@@ -44,7 +45,8 @@
         </a>
       </li>
        <li  v-for="(item, itemIndex) in text.arr.waitExpenseList" :key="itemIndex">
-              <a class="bbox" :href="'/pages/fukuandetail/main?id='+item.ID+'&proname='+item.ProName+'&type='+text.type+'&wtid='+item.wtid+'&fenlei='+item.ApplyType">
+              <a class="bbox" 
+              :href="'/pages/fukuandetail/main?id='+item.ID+'&proname='+item.ProName+'&type='+text.type+'&wtid='+item.wtid+'&fenlei='+item.ApplyType+'&IsUnionApproval='+item.IsUnionApproval">
           <view class="lef bbox xycenter">
            <view class="iconfont icon-fukuanguanli"></view>
           </view>

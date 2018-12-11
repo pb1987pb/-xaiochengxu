@@ -42,7 +42,7 @@ export default {
     },
     //请求待办详情数据的时候，传递的参数data
     getdbCanshu(){
-      // cid:this.id,wtid:this.wtid
+      
            return { wtid:this.wtid};
     },
  //通过获取拒绝，type是1表示通过，是0表示拒绝，str是备注的内容

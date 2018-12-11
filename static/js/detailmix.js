@@ -8,6 +8,7 @@ export default {
        proname:'',//项目名称
        type:'',//是已办还是代办
         wtid:'',//待办的时候才有这个id,
+        lianheurl:'/API/WXGetData/ReturnMsgForBillWithOutFeedBack',
         ybdeturl:'',//已办详情的url和待办没审批权限的人的url
         dbyesUrl:'',//代办详情有审批权限的url
          backUrl:'',//通过获取拒绝跳转回去的地址
@@ -17,14 +18,26 @@ export default {
          cfid:'',
          goType:'',
        compactName:'',
-
+       IsUnionApproval:'',
+       tgtitle:'通过',
+        jjtitle:'拒绝',
   }
  },
 methods:{
     //给详情模板组织数据
     xuanranshuju(res){
           this.childdata=res.data;
-         this.childdata.proname=this.proname;    
+         this.childdata.proname=this.proname;  
+         console.log('我进来了');
+         //联和审批的时候是确认阅读和取消  
+         if(this.IsUnionApproval==1){
+                 this.tgtitle="确认阅读";
+                 this.jjtitle="取消";
+         }else 
+         {
+             this.tgtitle="通过";
+             this.jjtitle="拒绝";
+         }
     },
     //请求已办详情数据的时候，传递的参数data
     getybCanshu(){
@@ -41,6 +54,7 @@ methods:{
                let res =await this.$http.get(url, data);
                this.xuanranshuju(res);
             }catch(e){
+              
                 this.childdata={};
              }
 },
@@ -48,7 +62,7 @@ methods:{
                     var that=this;
       wx.showModal({
   title: '提示',
-  content: '你确定通过这条报销',
+  content: '你确定通过这条信息',
   success: function(res) {
 
     if (res.confirm) {//通过
@@ -64,7 +78,7 @@ methods:{
          var that=this;
                wx.showModal({
   title: '提示',
-  content: '你确定拒绝这条报销',
+  content: '你确定拒绝这条信息',
   success: function(res) {
     if (res.confirm) {
       // 确定拒绝的代码
@@ -89,7 +103,7 @@ methods:{
         this.id=this.$root.$mp.query.id;//获取id
          this.proname=this.$root.$mp.query.proname;//项目名字
         this.type=this.$root.$mp.query.type; //是待办还是已办
-           console.log('我这里接收到数据了没：'+this.type);
+      
          this.wtid=this.$root.$mp.query.wtid;//待办才有这个
         this.fenlei=this.$root.$mp.query.fenlei; //一般是 2 ，有项目是 1
         this.compactName=this.$root.$mp.query.compactName;
@@ -99,6 +113,8 @@ methods:{
         this.cfid =this.$root.$mp.query.cfid;
         this.goType=this.$root.$mp.query.goType;
 
+    this.IsUnionApproval=this.$root.$mp.query.IsUnionApproval;
+           console.log(this.wtid);
             //下面这个就是请求数据的方法
               let data={}; //请求发送的数据
               let url='' ;// 请求的连接
